@@ -1,0 +1,124 @@
+.fsm {
+    width: 580px;
+    float: left;
+}
+
+.fsm select {
+    width: 270px;
+    height: 275px;
+}
+
+.fsm-choices,
+.fsm-selected {
+    float: left;
+    width: 270px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.fsm-choices select {
+    height: 186px;
+}
+
+.fsm-choices h2,
+.fsm-selected h2 {
+    border: 1px;
+    font-size: 12px;
+}
+
+.fsm .fsm-filter {
+    background: white;
+    border-left: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    padding: 3px;
+    font-size: 10px;
+    margin: 0;
+    text-align: left;
+}
+
+.fsm-filter label {
+    display: inline;
+    float: none;
+    padding: 0;
+}
+
+.fsm .fsm-choices .fsm-filter {
+    padding: 4px 5px;
+}
+
+.fsm .fsm-choices input {
+    width: 230px;
+}
+
+.fsm ul.fsm-selector {
+    float: left;
+    width: 22px;
+    height: 50px;
+    margin: 128px 3px 0 3px;
+    padding: 0;
+}
+
+.fsm-choices li {
+    margin: 0;
+    padding: 3px;
+    list-style-type: none;
+}
+
+.fsm select {
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+.fsm-choices select {
+    height: 244px;
+}
+
+.fsm-add, .fsm-remove {
+    margin-left: 6px;
+    display: block;
+    text-indent: -3000px;
+}
+
+.fsm-add {
+    margin-bottom: 2px;
+}
+
+.fsm-add {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #999;
+}
+.fsm-remove {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+
+    border-right:8px solid #999;
+}
+
+a.fsm-chooseall, a.fsm-clearall {
+    display: block;
+    width: 95px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    padding: 3px 0 3px 18px;
+}
+
+a.fsm-chooseall {
+    width: 112px;
+}
+
+.fsm select {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.fsm-submit {
+    display: none;
+}

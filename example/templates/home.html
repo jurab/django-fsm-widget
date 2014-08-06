@@ -1,0 +1,12 @@
+<html>
+<head></head>
+<body>
+    <a href="{% url 'add' %}">Add More Spaghetti!</a>
+    <br/>
+    <br/>
+    <br/>
+    {% for obj in objs %}
+        <a href="{% url 'edit' pk=obj.pk %}">{{ obj }}</a><br/>
+    {% endfor %}
+</body>
+</html>

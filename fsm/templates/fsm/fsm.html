@@ -1,0 +1,68 @@
+{% load static from staticfiles %}
+
+<script type="text/javascript">
+    var {{ attrs.id}}_url = "{{ query_url }}";
+    var {{ attrs.id }}_selected_values = [{% for choice in selected %}"{{ choice.0 }}", {% endfor %}];
+</script>
+
+<div class="{{ name }}-fsm">
+    <div class="fsm">
+
+        <div class="fsm-choices">
+            <h2>Available {{ verbose_name }}
+                <img src="{% static 'admin/img/icon-unknown.gif' %}" width="10" height="10" class="help help-tooltip" title="This is the list of available {{ verbose_name }}. You may choose some by selecting them in the box below and then clicking the &quot;Choose&quot; arrow between the two boxes.">
+            </h2>
+            <p id="{{ attrs.id }}_filter" class="fsm-filter">
+                <label for="{{ attrs.id }}_input">
+                    <img src="{% static 'admin/img/selector-search.gif' %}" class="help-tooltip" alt="" title="Type into this box to filter down the list of available {{ verbose_name }}.">
+                </label>
+                <input type="text" placeholder="Filter" id="{{ attrs.id }}_input" onkeyup='(function(){fsm_filter("{{ attrs.id }}_input");})()'>
+            </p>
+
+            <select multiple="multiple" class="fsm-filtered" id="{{ attrs.id }}_from" name="{{ name }}_old">
+                {% for choice in choices %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+
+            <a title="Click to choose all {{ verbose_name }} at once." href='javascript: (function(){ fsm_move_all("{{ attrs.id }}_from", "{{ attrs.id }}_to","{{ attrs.id }}");})()' id="{{ attrs.id }}_add_all_link" class="fsm-chooseall">Choose all</a>
+        </div>{# fsm-choices #}
+
+
+        <ul class="fsm-selector">
+            <li>
+                <a title="Choose" href='javascript: (function(){fsm_move("{{ attrs.id }}_from","{{ attrs.id }}_to","{{ attrs.id }}");})()' id="{{ attrs.id }}_add_link" class="fsm-add">Choose</a>
+            </li>
+            <li>
+                <a title="Remove" href='javascript: (function(){fsm_move("{{ attrs.id }}_to","{{ attrs.id }}_from","{{ attrs.id }}");})()' id="{{ attrs.id }}_remove_link" class="fsm-remove">Remove</a>
+            </li>
+        </ul>
+
+        <div class="fsm-selected">
+            <h2>Chosen {{ verbose_name }}
+                <img src="{% static 'admin/img/icon-unknown.gif' %}" width="10" height="10" class="help help-tooltip" title="This is the list of chosen {{ verbose_name }}. You may remove some by selecting them in the box below and then clicking the &quot;Remove&quot; arrow between the two boxes.">
+            </h2>
+            <select id="{{ attrs.id }}_to" multiple="multiple" class="fsm-filtered">
+                {% for choice in selected %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+            <a title="Click to remove all chosen {{ verbose_name }} at once." href='javascript: (function() { fsm_move_all("{{ attrs.id }}_to", "{{ attrs.id }}_from","{{ attrs.id }}");})()' id="{{ attrs.id }}_remove_all_link" class="fsm-clearall">Remove all</a>
+        </div>{# fsm-selected #}
+
+        <div class="fsm-submit">
+            <select id="{{ attrs.id }}_submit" multiple="multiple" name="{{ name }}" class="fsm-filtered">
+                {% for choice in selected %}
+                <option value="{{ choice.0 }}" selected="selected">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>{# fsm-submit #}
+
+    </div>{# fsm #}
+</div>{# fsm {{ name }}-filtered-select #}
+
+{% if async %}
+<script>
+    fsm_filter("{{ attrs.id }}_input");
+</script>
+{% endif %}
