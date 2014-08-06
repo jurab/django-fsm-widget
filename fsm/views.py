@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.views.generic import View
 
 
-class FSM(View):
+class FSMView(View):
     """
     A basic view to handle filtering for the django-fsm-widget.
 
