@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+recursive-include fsm/static *
+recursive-include fsm/templates *
