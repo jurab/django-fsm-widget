@@ -5,14 +5,14 @@ from django.views.generic.detail import SingleObjectMixin
 
 from example.forms import SpaghettiForm
 from example.models import Meatball, Noodle, Spaghetti
-from fsm.views import FSM
+from fsm.views import FSMView
 
 
-class MeatballFilter(FSM):
+class MeatballFilter(FSMView):
     model = Meatball
 
 
-class NoodleFilter(FSM):
+class NoodleFilter(FSMView):
     model = Noodle
     fields = ('pk__icontains', 'length__icontains')
 
