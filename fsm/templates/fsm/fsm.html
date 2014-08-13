@@ -19,7 +19,7 @@
                 <input type="text" placeholder="Filter" id="{{ attrs.id }}_input" onkeyup='(function(){fsm_filter("{{ attrs.id }}_input");})()'>
             </p>
 
-            <select multiple="multiple" class="fsm-filtered" id="{{ attrs.id }}_from" name="{{ name }}_old">
+            <select multiple="multiple" class="fsm-filtered" id="{{ attrs.id }}_from" name="{{ name }}_old" {{ final_attrs|safe }}>
                 {% for choice in choices %}
                 <option value="{{ choice.0 }}">{{ choice.1 }}</option>
                 {% endfor %}

@@ -1,4 +1,5 @@
 from django.forms import Media, SelectMultiple
+from django.forms.util import flatatt
 from django.utils.safestring import mark_safe
 from django.contrib.admin.templatetags.admin_static import static
 from django.template.loader import render_to_string
@@ -6,8 +7,9 @@ from django.template.loader import render_to_string
 
 class FSM(SelectMultiple):
     def __init__(self, verbose_name, url, async=False, attrs={},
-                 choices=(), lazy=False):
-        super(FSM, self).__init__(attrs, choices)
+                 choices=(), lazy=False, **kwargs):
+        attrs['disabled'] = True
+        super(FSM, self).__init__(attrs, choices, **kwargs)
 
         # If lazy is True the initial choices are not loaded with the template.
         self.lazy = lazy
@@ -50,6 +52,7 @@ class FSM(SelectMultiple):
             'attrs': attrs,
             # If lazy-loading, don't pass in the choices.
             'choices': set(tuple(choices.items())) if not self.lazy else [],
+            'final_attrs': flatatt(self.build_attrs(attrs, name=name)),
             'name': name,
             'query_url': self.query_url,
             'selected': selected_list,
