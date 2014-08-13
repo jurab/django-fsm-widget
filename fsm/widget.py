@@ -8,7 +8,7 @@ from django.template.loader import render_to_string
 class FSM(SelectMultiple):
     def __init__(self, verbose_name, url, async=False, attrs={},
                  choices=(), lazy=False, **kwargs):
-        attrs['disabled'] = True
+
         super(FSM, self).__init__(attrs, choices, **kwargs)
 
         # If lazy is True the initial choices are not loaded with the template.
