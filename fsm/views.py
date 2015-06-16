@@ -71,7 +71,7 @@ class FSMView(View):
             # Return everything if no filter_val or fields are specified.
             # This allows for a very straightforward async request, but will
             # probably not behave as expected if no fields are specified.
-            new_base = base_queryset[:self.obj_limit]
+            new_base = base_queryset
 
         if self.obj_limit:
             new_base = new_base[:self.obj_limit]
