@@ -20,7 +20,7 @@ class FSMView(View):
     # The operator used to join on the queried fields. Not sure why anyone
     # would want to use something other than or, but customizability is good.
     default_operator = operator.or_
-    obj_limit = 100
+    obj_limit = None
 
     def get(self, request):
         """
@@ -66,12 +66,17 @@ class FSMView(View):
         if filter_val:
             q = [Q(**{field: filter_val}) for field in self.fields]
         if filter_val and q:
-            return base_queryset.filter(reduce(self.default_operator, q))[:self.obj_limit]
+            new_base = base_queryset.filter(reduce(self.default_operator, q))
         else:
             # Return everything if no filter_val or fields are specified.
             # This allows for a very straightforward async request, but will
             # probably not behave as expected if no fields are specified.
-            return base_queryset[:self.obj_limit]
+            new_base = base_queryset[:self.obj_limit]
+
+        if self.obj_limit:
+            new_base = new_base[:self.obj_limit]
+
+        return new_base
 
     @staticmethod
     def to_json(results):
