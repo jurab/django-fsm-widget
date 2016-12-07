@@ -10,11 +10,11 @@
 
         <div class="fsm-choices">
             <h2>Available {{ verbose_name }}
-                <img src="{% static 'admin/img/icon-unknown.gif' %}" width="10" height="10" class="help help-tooltip" title="This is the list of available {{ verbose_name }}. You may choose some by selecting them in the box below and then clicking the &quot;Choose&quot; arrow between the two boxes.">
+                <img src="{% static 'admin/img/icon-unknown.svg' %}" width="10" height="10" class="help help-tooltip" title="This is the list of available {{ verbose_name }}. You may choose some by selecting them in the box below and then clicking the &quot;Choose&quot; arrow between the two boxes.">
             </h2>
             <p id="{{ attrs.id|remove_hyphens }}_filter" class="fsm-filter">
                 <label for="{{ attrs.id|remove_hyphens }}_input">
-                    <img src="{% static 'admin/img/selector-search.gif' %}" class="help-tooltip" alt="" title="Type into this box to filter down the list of available {{ verbose_name }}.">
+                    <img src="{% static 'admin/img/selector-search.svg' %}" class="help-tooltip" alt="" title="Type into this box to filter down the list of available {{ verbose_name }}.">
                 </label>
                 <input type="text" placeholder="Filter" id="{{ attrs.id|remove_hyphens }}_input" onkeyup='(function(){fsm_filter("{{ attrs.id|remove_hyphens }}_input");})()'>
             </p>
@@ -40,7 +40,7 @@
 
         <div class="fsm-selected">
             <h2>Chosen {{ verbose_name }}
-                <img src="{% static 'admin/img/icon-unknown.gif' %}" width="10" height="10" class="help help-tooltip" title="This is the list of chosen {{ verbose_name }}. You may remove some by selecting them in the box below and then clicking the &quot;Remove&quot; arrow between the two boxes.">
+                <img src="{% static 'admin/img/icon-unknown.svg' %}" width="10" height="10" class="help help-tooltip" title="This is the list of chosen {{ verbose_name }}. You may remove some by selecting them in the box below and then clicking the &quot;Remove&quot; arrow between the two boxes.">
             </h2>
             <select id="{{ attrs.id|remove_hyphens }}_to" multiple="multiple" class="fsm-filtered">
                 {% for choice in selected %}
