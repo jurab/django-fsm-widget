@@ -17,7 +17,7 @@ setup(
     packages=find_packages(exclude=('example', )),
     include_package_data=True,
     install_requires = [
-        'django>=1.5'
+        'django>=1.9'
     ],
 
     author='Ashley Mathew',

@@ -1,5 +1,5 @@
 from django.forms import Media, SelectMultiple
-from django.forms.util import flatatt
+from django.forms.utils import flatatt
 from django.utils.safestring import mark_safe
 from django.contrib.admin.templatetags.admin_static import static
 from django.template.loader import render_to_string
