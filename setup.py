@@ -8,7 +8,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 
 setup(
     name='django-fsm-widget',
-    version='0.0.1',
+    version='0.0.2',
 
     description='A filtered select multiple widget that allows for lazy '
                 'loading.',
