@@ -14,7 +14,7 @@
             </h2>
             <p id="{{ attrs.id|remove_hyphens }}_filter" class="fsm-filter">
                 <label for="{{ attrs.id|remove_hyphens }}_input">
-                    <img src="{% static 'admin/img/selector-search.svg' %}" class="help-tooltip" alt="" title="Type into this box to filter down the list of available {{ verbose_name }}.">
+                    <img src="{% static 'admin/img/search.svg' %}" class="help-tooltip" alt="" title="Type into this box to filter down the list of available {{ verbose_name }}.">
                 </label>
                 <input type="text" placeholder="Filter" id="{{ attrs.id|remove_hyphens }}_input" onkeyup='(function(){fsm_filter("{{ attrs.id|remove_hyphens }}_input");})()'>
             </p>
