@@ -1,5 +1,6 @@
 import json
 import operator
+from functools import reduce
 
 from django.db.models import Q
 from django.http import HttpResponse
