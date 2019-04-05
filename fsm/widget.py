@@ -6,6 +6,8 @@ from django.template.loader import render_to_string
 
 
 class FSM(SelectMultiple):
+    template_name = 'fsm/fsm.html'
+    
     def __init__(self, verbose_name, url, async=False, attrs={},
                  choices=(), lazy=False, **kwargs):
 
@@ -32,8 +34,9 @@ class FSM(SelectMultiple):
         css = {'all': (static('fsm/css/fsm.css'), )}
         return Media(js=js, css=css)
 
-    def render(self, name, selected, attrs=None, choices=None):
-        selected = selected or []
+    def get_context(self, name, value, attrs=None, choices=None):
+        context = super().get_context(name, value, attrs)
+        selected = value or []
         choices = choices or ()
         attrs = attrs or {}
 
@@ -47,17 +50,16 @@ class FSM(SelectMultiple):
                 selection = choices.pop(val)
                 selected_list.append((val, selection))
 
-        data = {
+        final_attrs = {k:v for k, v in attrs.items() if k not in ['id', 'name']}
+
+        context['widget'].update({
             'async': self.async,
             'attrs': attrs,
             # If lazy-loading, don't pass in the choices.
             'choices': set(tuple(choices.items())) if not self.lazy else [],
-            'final_attrs': flatatt(self.build_attrs(attrs, name=name)),
+            'final_attrs': flatatt(final_attrs),
             'name': name,
             'query_url': self.query_url,
             'selected': selected_list,
-            'verbose_name': self.verbose_name,
-        }
-        output = render_to_string('fsm/fsm.html', data)
-
-        return mark_safe(output)
+        })
+        return context

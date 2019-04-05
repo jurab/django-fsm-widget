@@ -3,7 +3,7 @@ django-fsm-widget
 
 What is it?
 -----------
-A select multiple widget that allows for filtering and lazy loading. It is inspired by Django's `FilteredSelectMultiple widget <https://github.com/django/django/blob/68c9a72e29c929d896a25b3a0f566c09b6723dd4/django/contrib/admin/widgets.py#L21>`_, but with a few improvements:
+A select multiple widget that allows for filtering and lazy loading. It is inspired by Django's `FilteredSelectMultiple widget <https://github.com/django/django/blob/1.11.20/django/contrib/admin/widgets.py#L21>`_, but with a few improvements:
 
 * Lazy loading and asynchronous loading for the initial choices make it quicker to work with very large data sets.
 * The ability to specify the field and lookup types the filter is being applied on.
@@ -13,14 +13,14 @@ _________________
 
 Requirements
 ------------
-django-fsm-widget requires Django 1.5 or later.
+django-fsm-widget requires Django 1.11 or later.
 
 
 Installation
 ------------
 To install the latest version of django-fsm-widget:
 
-``pip install git+git://github.com/DirectEmployers/django-fsm-widget.git@master``
+``pip install git+git://github.com/DirectEmployers/django-fsm-widget.git@v1.11.1``
 
 
 Getting Started
