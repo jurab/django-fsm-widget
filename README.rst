@@ -45,7 +45,7 @@ The available params for the FSM widget are:
 
 * ``verbose_name`` (required): A name for the object that the widget is being used on that is used when describing the object. Usually the field label  will work for this.
 * ``url`` (required): The url used for filtering/autocomplete and lazy loading. The endpoint should be a subclass of the ``FSMView`` view class covered below.
-* ``async`` (``default==False``): True if you want to load the initial choices after the page has loaded, otherwise False. Note: If ``async==True`` and ``lazy==False`` the initial choices will be loaded twice.
+* ``use_async`` (``default==False``): True if you want to load the initial choices after the page has loaded, otherwise False. Note: If ``use_async==True`` and ``lazy==False`` the initial choices will be loaded twice.
 * ``attrs``: Form element attributes. Same as most other Django widgets.
 * ``choices``: The initial choices to select from.
 * ``lazy`` (``default==False``): Prevent loading of initial choices until filter terms have been entered by the user.

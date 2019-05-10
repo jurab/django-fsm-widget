@@ -8,7 +8,7 @@ from django.template.loader import render_to_string
 class FSM(SelectMultiple):
     template_name = 'fsm/fsm.html'
     
-    def __init__(self, verbose_name, url, async=False, attrs={},
+    def __init__(self, verbose_name, url, use_async=False, attrs={},
                  choices=(), lazy=False, **kwargs):
 
         super(FSM, self).__init__(attrs, choices, **kwargs)
@@ -20,10 +20,10 @@ class FSM(SelectMultiple):
         # off of fsm.views.FSM.
         self.query_url = url
 
-        # If async is True the initial choices are loaded after the <select>
+        # If use_async is True the initial choices are loaded after the <select>
         # fields used by the widget are finished loading. The initial choices
         # will be loaded using the query_url.
-        self.async = async
+        self.use_async = use_async
 
         # The field name to be used for the widget.
         self.verbose_name = verbose_name
@@ -53,7 +53,7 @@ class FSM(SelectMultiple):
         final_attrs = {k:v for k, v in attrs.items() if k not in ['id', 'name']}
 
         context['widget'].update({
-            'async': self.async,
+            'use_async': self.use_async,
             'attrs': attrs,
             # If lazy-loading, don't pass in the choices.
             'choices': set(tuple(choices.items())) if not self.lazy else [],

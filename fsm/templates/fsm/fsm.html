@@ -61,7 +61,7 @@
     </div>{# fsm #}
 </div>{# fsm {{ widget.name }}-filtered-select #}
 
-{% if async %}
+{% if use_async %}
 <script>
     fsm_filter("{{ widget.attrs.id|remove_hyphens }}_input");
 </script>

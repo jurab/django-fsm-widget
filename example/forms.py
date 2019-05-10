@@ -15,7 +15,7 @@ class SpaghettiForm(forms.ModelForm):
     noodles = forms.ModelMultipleChoiceField(Noodle.objects.all(),
                                              widget=FSM('Noodles',
                                              reverse_lazy('noodle_filter'),
-                                             lazy=True, async=True))
+                                             lazy=True, use_async=True))
 
     def __init__(self, *args, **kwargs):
         super(SpaghettiForm, self).__init__(*args, **kwargs)
