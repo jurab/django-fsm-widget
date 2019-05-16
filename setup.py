@@ -8,7 +8,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 
 setup(
     name='django-fsm-widget',
-    version='1.11.1', # first 2 digits mirror active Django version
+    version='1.11.2', # first 2 digits mirror active Django version
 
     description='A filtered select multiple widget that allows for lazy '
                 'loading.',
