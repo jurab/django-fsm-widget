@@ -65,7 +65,8 @@ class FSMView(View):
                             filter_val.
         """
         if filter_val:
-            q = [Q(**{field: filter_val}) for field in self.fields]
+            q = [Q(**{f'{field}__icontains': filter_val}) for field in self.fields]
+            print(q)
         if filter_val and q:
             new_base = base_queryset.filter(reduce(self.default_operator, q))
         else:
