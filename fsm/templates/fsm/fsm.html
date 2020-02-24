@@ -1,4 +1,4 @@
-{% load static from staticfiles %}
+{% load static from static %}
 {% load removehyphens %}
 <script type="text/javascript">
     var {{ widget.attrs.id|remove_hyphens }}_url = "{{ widget.query_url }}";

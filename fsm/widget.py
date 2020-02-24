@@ -1,13 +1,13 @@
 from django.forms import Media, SelectMultiple
 from django.forms.utils import flatatt
 from django.utils.safestring import mark_safe
-from django.contrib.admin.templatetags.admin_static import static
 from django.template.loader import render_to_string
+from django.templatetags.static import static
 
 
 class FSM(SelectMultiple):
     template_name = 'fsm/fsm.html'
-    
+
     def __init__(self, verbose_name, url, use_async=False, attrs={},
                  choices=(), lazy=False, **kwargs):
 
@@ -30,6 +30,7 @@ class FSM(SelectMultiple):
 
     @property
     def media(self):
+
         js = [static('fsm/js/fsm.js')]
         css = {'all': (static('fsm/css/fsm.css'), )}
         return Media(js=js, css=css)
@@ -50,7 +51,7 @@ class FSM(SelectMultiple):
                 selection = choices.pop(val)
                 selected_list.append((val, selection))
 
-        final_attrs = {k:v for k, v in attrs.items() if k not in ['id', 'name']}
+        final_attrs = {k: v for k, v in attrs.items() if k not in ['id', 'name']}
 
         context['widget'].update({
             'use_async': self.use_async,
